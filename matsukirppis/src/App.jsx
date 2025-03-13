@@ -9,6 +9,7 @@ import PrintingList from './components/PrintingList'
 import ProductListing from './components/ProductListing'
 import AddItems from './components/AddItems'
 import axios from 'axios';
+import Login_SignUp_page from './components/Login-Signup'
 
 function reducer(state, action) {
   let deepCopy = JSON.parse(JSON.stringify(state))
@@ -26,6 +27,8 @@ function reducer(state, action) {
 function App() {
    const [value, setValue] = useState('1');
   const [state, dispatch] = useReducer(reducer, []);
+  const [isloggedIn, setIsloggedIn] = useState(false);
+
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -50,6 +53,10 @@ function App() {
 
   return (
     <>
+      {!isloggedIn ?
+      <Login_SignUp_page/>
+     :
+        <>
         <h2>
           MatsuKirppis
         </h2>
@@ -65,11 +72,14 @@ function App() {
         <TabPanel value="1"><AddItems/></TabPanel>
         <TabPanel value="2"><ProductListing data={state}/></TabPanel>
         <TabPanel value="3"><PrintingList data={state}/></TabPanel>
-      </TabContext>
-    </Box>
+         </TabContext>
+        </Box>
 
+         </>
+    }
     </>
-  )
+)
 }
+
 
 export default App

@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react'
 import '../App.css'
-// import Barcode from 'react-barcode';
 import axios from 'axios';
 
 
@@ -92,13 +91,6 @@ var server_is_k18;
   <input type="radio"  name="is_k18" value="false" onChange={onChange}></input><br/>
            <input type="submit" id="gradient_Button" value="Lisää tuote" />
         </form>
-{/*
-        <ul className='productListing'>
-        {products.map(product => (
-          <li key={product.id}>{product.productName},{product.productPrice},{product.is_k18 === 'true' ? "K-18 tuote": "Tuote ei ole K-18" }<br/>
-          <Barcode value={product.productName} /></li>
-        ))}
-      </ul> */}
 
     </>
   )

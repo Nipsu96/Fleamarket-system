@@ -1,10 +1,10 @@
 const express = require("express")
 const productsRouter = require('./routes/products');
+const userRouter = require('./routes/user');
 const databaseconnection = require('./db/connection')
 const cors = require("cors")
 
 const app = express()
-const bodyParser = require('body-parser');
 
 app.use(cors());
 
@@ -13,6 +13,7 @@ app.use(express.urlencoded({ extended: false }));
 
 
 app.use('/api/products', productsRouter);
+app.use('/api/user', userRouter);
 
 const PORT = process.env.PORT || 5000;
 

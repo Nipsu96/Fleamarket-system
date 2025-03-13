@@ -21,7 +21,7 @@ function PrintingList(props) {
         <ul className='productListing'  >
                {props.data[0].map(product => (
                  <li key={product.product_id}>{product.product_name},{product.product_price},{product.is_k18 === 1 ? "K-18 tuote": "Tuote ei ole K-18" }<br/>
-                 <Barcode value={product.product_name} /></li>
+                 <Barcode value={product.product_id} /></li>
                ))}
         </ul>
         </div>
