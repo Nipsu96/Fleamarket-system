@@ -23,7 +23,9 @@ function Login() {
         console.log("Login aloitettu!")
     try {
         token = await axios.post('http://localhost:8081/api/user/login',userData)
-        console.log("token",token)
+        console.log("token",token.data)
+         window.localStorage.setItem("user_token", (token.data.userToken))
+            window.location.href = `/`
         } catch (error) {
         //     let errorMessage = error.response.data.error
         //     setPopupInfo(errorMessage)

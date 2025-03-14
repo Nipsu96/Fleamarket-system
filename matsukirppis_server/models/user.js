@@ -2,11 +2,11 @@
 const { connection } = require('../db/connection');
 const bcrypt = require('bcrypt');
 
-const userLogin = async (username, password) => {
-    const QUERY = "SELECT * FROM Users WHERE username = ? AND password = ?"
+const findUser = async (username) => {
+    const QUERY = "SELECT * FROM Users WHERE username = ? "
     try {
         const client = await connection.getConnection()
-        const result = await client.query(QUERY, [username,password])
+        const result = await client.query(QUERY, [username])
         return result;
     } catch (e) {
         console.log("error occured in addproduct", e)
@@ -30,4 +30,4 @@ const addUser = async (username, email, phonenumber, password) => {
 
 }
 
-module.exports = { userLogin,addUser};
+module.exports = { findUser,addUser};

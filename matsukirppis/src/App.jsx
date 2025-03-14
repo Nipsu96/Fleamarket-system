@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 import { useState,useEffect,useReducer } from 'react'
 import './App.css'
 import Box from '@mui/material/Box';
@@ -14,7 +15,9 @@ import Login_SignUp_page from './components/Login-Signup'
 function reducer(state, action) {
   let deepCopy = JSON.parse(JSON.stringify(state))
   switch (action.type) {
-    case 'MOVE_RIDE':
+    case 'ADD_PRODUCT':
+        let newProduct = {...action.data.newProduct, product_id: action.data.id}
+      deepCopy[0].push(newProduct)
       return deepCopy
     case 'INIT_DATA':
       return action.data
@@ -27,7 +30,7 @@ function reducer(state, action) {
 function App() {
    const [value, setValue] = useState('1');
   const [state, dispatch] = useReducer(reducer, []);
-  const [isloggedIn, setIsloggedIn] = useState(false);
+  const [token, setToken] = useState()
 
 
   const handleChange = (event, newValue) => {
@@ -49,11 +52,14 @@ function App() {
 
   useEffect(() => {
     createData();
+     let storage = window.localStorage;
+      let userToken = storage.getItem("user_token")
+      setToken(userToken)
   },[])
 
   return (
     <>
-      {!isloggedIn ?
+      {!token ?
       <Login_SignUp_page/>
      :
         <>
@@ -69,7 +75,7 @@ function App() {
             <Tab label="Tulosta Hintalaput" value="3" />
           </TabList>
         </Box>
-        <TabPanel value="1"><AddItems/></TabPanel>
+        <TabPanel value="1"><AddItems dispatch= {dispatch}/></TabPanel>
         <TabPanel value="2"><ProductListing data={state}/></TabPanel>
         <TabPanel value="3"><PrintingList data={state}/></TabPanel>
          </TabContext>

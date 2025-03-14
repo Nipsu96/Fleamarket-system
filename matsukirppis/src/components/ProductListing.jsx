@@ -6,6 +6,7 @@ import '../App.css'
 
 function ProductListing(props) {
   const [totalSum, setTotalSum] = useState(0);
+  const [products, setProducts] = useState([]);
   var total = 0;
   var lengthOfData = 0;
 
@@ -17,6 +18,9 @@ function ProductListing(props) {
             lengthOfData++;
         }
     }
+    if(props.data != undefined){
+        setProducts(props.data[0])
+    }
 
   },[])
 
@@ -24,19 +28,22 @@ function ProductListing(props) {
   return (
     <>
         <h3>Ilmoitetut Tuotteet</h3>
+        {products.length == 0 ? <><h3>Ei Yhtään ilmoitettua tuotetta</h3></>:
              <table id="productTable">
             <thead>
             <tr>
                 <th className='tableheader'>Tuotenumero</th>
+                <th className='tableheader'>Kategoria</th>
                 <th className='tableheader'>Tuotteen nimi</th>
                 <th className='tableheader'>Hinta</th>
             </tr>
             </thead>
 
-         {props.data[0].map((product,index) => (
+         {products.map((product,index) => (
                 <tbody key ={index}>
                     <tr>
                     <td>{product.product_id}</td>
+                    <td>{product.category_id}</td>
                  <td>{product.product_name}</td>
                 <td>{product.product_price}€</td>
                 </tr>
@@ -50,6 +57,7 @@ function ProductListing(props) {
             </tr>
         </tfoot>
     </table>
+    }
     </>
   )
 }
