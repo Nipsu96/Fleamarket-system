@@ -39,7 +39,7 @@ function App() {
 
    const createData = async () => {
       try {
-        let result =  await axios.get("http://localhost:8081/api/products");
+        let result =  await axios.get("http://localhost:5432/api/products");
         console.log("result", result.data[0])
         if (result.data.length > 0) {
           dispatch({ type: "INIT_DATA", data: result.data })
