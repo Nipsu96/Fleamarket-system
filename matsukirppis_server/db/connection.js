@@ -18,7 +18,8 @@ const connectToDatabase= async ()=> {
         console.log("MySQL connection works!")
 
     }catch(e){
-        console.log("Database error".e)
+        console.log("Database error:")
+        console.log(e)
         // throw e;
     }
 }
