@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-const { findAll, addProductToDB } = require('../models/products');
+const { findAll, addProductToDB } = require('../models/products.js');
 const jwt = require('jsonwebtoken');
 
 

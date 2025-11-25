@@ -81,7 +81,28 @@ li{
     background-color: #cbd1d3;
     color: #333;
 }
-/* 
+/*
 .signup_form input:focus,.login_form input:focus {
     background-color: #c2ffff;
 } */
+
+label {
+  padding-right: 15px;
+}
+
+.addProducts{
+  width: 40%;
+background-color: #CBEDB6;
+border-radius: 8%;
+padding: 8px 10px 15px 30px;
+}
+ .header{
+  background-color: #CBEDB6;
+  padding-left: 15px;
+  padding-top: 20px;
+ }
+
+ body,h2 {
+  margin: 0px;
+ }
+

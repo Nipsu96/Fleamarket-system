@@ -44,6 +44,7 @@ function Register() {
                     className="input"
                     name="username"
                     type="text"
+                    required
                 />
 
                 <label className="label" name="Email">Sähköposti</label>
@@ -52,6 +53,7 @@ function Register() {
                     className="input"
                     name="email"
                     type="email"
+                    required
                 />
 
                   <label className="label" name="Phonenumber">Puhelinnumero</label>
@@ -61,6 +63,7 @@ function Register() {
                     name="phonenumber"
                     type="tel"
                     pattern="[0-9]{15}"
+                    required
                 />
 
                 <label className="label" name="Password">Salasana</label>
@@ -69,6 +72,7 @@ function Register() {
                     className="input"
                     name="password"
                     type="password"
+                    required
                 />
 
                 <button onClick={doSubmit} className="btn" type="submit">

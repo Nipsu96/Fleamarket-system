@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-const { addUser, findUser } = require('../models/user');
+const { addUser, findUser } = require('../models/user.js');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();

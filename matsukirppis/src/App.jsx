@@ -62,26 +62,30 @@ function App() {
       {!token ?
       <Login_SignUp_page/>
      :
-        <>
-        <h2>
-          MatsuKirppis
-        </h2>
+<>
        <Box sx={{ width: '100%', typography: 'body1' }}>
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+            <div className='header'>
+        <h2>
+          MatsuKirppis
+        </h2>
           <TabList onChange={handleChange} aria-label="lab API tabs example">
             <Tab label="Ilmoita Tavarat" value="1" />
             <Tab label="TavaraLuettelo" value="2" />
             <Tab label="Tulosta Hintalaput" value="3" />
           </TabList>
+           </div>
         </Box>
         <TabPanel value="1"><AddItems dispatch= {dispatch}/></TabPanel>
         <TabPanel value="2"><ProductListing data={state}/></TabPanel>
         <TabPanel value="3"><PrintingList data={state}/></TabPanel>
-         </TabContext>
-        </Box>
 
-         </>
+         </TabContext>
+
+        </Box>
+</>
+
     }
     </>
 )

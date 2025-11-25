@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-const { connection } = require('../db/connection');
+const { connection } = require('../db/connection.js');
 const bcrypt = require('bcrypt');
 
 const findUser = async (username) => {
@@ -9,7 +9,7 @@ const findUser = async (username) => {
         const result = await client.query(QUERY, [username])
         return result;
     } catch (e) {
-        console.log("error occured in addproduct", e)
+        console.log("error occured in finding a user", e)
         throw e;
     }
 
@@ -30,4 +30,4 @@ const addUser = async (username, email, phonenumber, password) => {
 
 }
 
-module.exports = { findUser,addUser};
+module.exports = { findUser, addUser };

@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-const { connection } = require('../db/connection');
+const { connection } = require('../db/connection.js');
 
 
 

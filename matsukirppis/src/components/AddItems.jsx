@@ -8,7 +8,7 @@ import axios from 'axios';
 
 
 function AddItems(props) {
-   const[categories,setCategories]= useState([])
+  //  const[categories,setCategories]= useState([])
   const [productData, setProductData] = useState({
         product_name: '',
         product_price: 0,
@@ -19,20 +19,28 @@ function AddItems(props) {
     })
 
     useEffect(() => {
-      //TODO: Add category fetch from the backend!
-      setCategories()
+      // TODO: Add category fetch from the backend!
+      // TODO: Sentit hintaan!
+      // TODO: Testaa rekisteröinnin validointi (tietojen oikeellisuuus + onko tunnus jo olemassa (sähköposti))
+      // TODO: Lisää käyttäjän koko nimi (Myös kantaan)
+      // TODO: Pop up "Käyttäjä luotu onnistuneesti!" -> kirjatumisikkunaan
+
+
+      // Nice to have: Nappi joka merkitsee listan valmiiksi
+      // Nice to have for now : token poistuu tietyn ajan jälkeen
+      // setCategories()
 
       },[])
-    // const categorys = [
-    //   {category_id:1,name:'Vaatteet'},
-    //   {category_id:2,name:'Manga'},
-    //    {category_id:3,name:'Pehmolelut'},
-    //    {category_id:4,name:'Peruukit'},
-    //    {category_id:5,name:'Figuurit'},
-    //    {category_id:6,name:'Cosplay'},
-    //    {category_id:7,name:'Kortit'},
-    //    {category_id:8,name:'Pikkusälä'}
-    //   ];
+    const categories = [
+      {category_id:1,name:'Vaatteet'},
+      {category_id:2,name:'Manga'},
+       {category_id:3,name:'Pehmolelut'},
+       {category_id:4,name:'Peruukit'},
+       {category_id:5,name:'Figuurit'},
+       {category_id:6,name:'Cosplay'},
+       {category_id:7,name:'Kortit'},
+       {category_id:8,name:'Pikkusälä'}
+      ];
     let storage = window.localStorage;
     let userToken = storage.getItem("user_token")
       const onChange = (e) => {
@@ -80,27 +88,30 @@ function AddItems(props) {
     }
   return (
     <>
+     <div className = "addProducts">
         <h2>
           MatsuKirppis
         </h2>
         <h4>Ilmoita tavarat</h4>
         <form className="addProduct_form" onSubmit={e => doSubmit(e)}>
+
           <label className="label_add" htmlFor="product_name">Tuotteen Nimi:</label>
-           <input type="text" id="product_name" name="product_name" onChange={onChange} placeholder="Tuotteen nimi" required></input><span className="validity"></span> <br className="desktop-break" />
+           <input type="text" id="product_name" name="product_name" onChange={onChange} placeholder="Tuotteen nimi" required></input><span className="validity"></span> <br className="desktop-break" /><br/>
            <label className="label_add" htmlFor="product_price">Tuotteen Hinta:</label>
-           <input type="number" id="product_price" name="product_price" onChange={onChange} placeholder="Tuotteen hinta" required></input><span className="validity"></span> <br className="desktop-break" />
+           <input type="number" id="product_price" name="product_price" onChange={onChange} placeholder="Tuotteen hinta" required></input><span className="validity"></span> € <br className="desktop-break" /><br/>
             <select id="category_id" name="category_id" onChange={onChange} defaultValue={'DEFAULT'}>
       <option value='DEFAULT' disabled > Valitse Kategoria</option>
       {categories.map((category) => <option key={category.name} value={category.category_id}>{category.name}</option>)}
-    </select><br/>
+    </select><br/><br/>
             <label className="label_add" htmlFor="is_k18">Onko tuote K18:</label><br/>
              <label htmlFor="Yes">Kyllä</label>
   <input type="radio"  name="is_k18" value="true"onChange={onChange}></input><br/>
    <label htmlFor="No">Ei</label>
   <input type="radio"  name="is_k18" value="false" onChange={onChange}></input><br/>
            <input type="submit" id="gradient_Button" value="Lisää tuote" />
-        </form>
 
+        </form>
+         </div>
     </>
   )
 }
